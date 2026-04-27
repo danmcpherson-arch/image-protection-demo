@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Image Protection Demo</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #111;
+      color: #fff;
+      text-align: center;
+      padding: 40px;
+    }
+
+    .container {
+      max-width: 600px;
+      margin: auto;
+    }
+
+    .image-wrapper {
+      position: relative;
+      overflow: hidden;
+      border-radius: 12px;
+    }
+
+    img {
+      width: 100%;
+      display: block;
+    }
+
+    .overlay {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 55%;
+      backdrop-filter: blur(20px);
+      background: linear-gradient(to bottom, transparent, rgba(0,0,0,0.9));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+    }
+
+    button {
+      margin-top: 20px;
+      padding: 10px 20px;
+      border: none;
+      background: #4CAF50;
+      color: white;
+      cursor: pointer;
+      border-radius: 6px;
+    }
+
+    .credit {
+      font-size: 11px;
+      color: #888;
+      margin-top: 12px;
+    }
+
+    a {
+      color: #4CAF50;
+      text-decoration: none;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+
+<div class="container">
+  <h2>“Protected” Image Demo</h2>
+  <p>Blur overlay applied to bottom portion</p>
+
+  <div class="image-wrapper">
+    <img src="unlock.jpg" alt="Demo Image">
+    
+    <div class="overlay" id="overlay">
+      <p><strong>Content Protected</strong></p>
+      <p>Bottom portion is blurred</p>
+    </div>
+  </div>
+
+  <button onclick="toggleOverlay()">Toggle Protection</button>
+
+  <p class="credit">
+    Image credit:
+    <a href="https://unsplash.com/@henniestander?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText" target="_blank">Hennie Stander</a> /
+    <a href="https://unsplash.com/photos/padlock-on-metal-gate-during-daytime-ACmOuY2lOug?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText" target="_blank">Unsplash</a>
+  </p>
+</div>
+
+<script>
+  function toggleOverlay() {
+    const overlay = document.getElementById('overlay');
+    overlay.style.display = overlay.style.display === 'none' ? 'flex' : 'none';
+  }
+
+  // Right-click deterrent
+  document.addEventListener('contextmenu', function (event) {
+    event.preventDefault();
+    alert('This is a preview image. Please support the photographer by purchasing the final version.');
+  });
+
+  // Long-press deterrent (mobile)
+  let pressTimer;
+
+  document.addEventListener('touchstart', function () {
+    pressTimer = setTimeout(function () {
+      alert('This is a preview image. Please support the photographer by purchasing the final version.');
+    }, 600);
+  });
+
+  document.addEventListener('touchend', function () {
+    clearTimeout(pressTimer);
+  });
+
+  document.addEventListener('touchmove', function () {
+    clearTimeout(pressTimer);
+  });
+</script>
+
+</body>
+</html>
