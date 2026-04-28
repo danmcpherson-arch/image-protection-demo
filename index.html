@@ -115,27 +115,22 @@
 
   <button onclick="toggleOverlay()">Toggle Protection</button>
 
-  <!-- Code caption -->
   <p class="caption">
     The image is still referenced directly in the page source:
   </p>
 
-  <!-- Code block -->
   <div class="code-block">
     &lt;img src="unlock.jpg" alt="Demo Image"&gt;
   </div>
 
-  <!-- Download caption -->
   <p class="caption">
     The same file is already delivered to the browser:
   </p>
 
-  <!-- Download link -->
-  <a class="download-link" href="unlock.jpg" download>
-    Download original image
+  <a class="download-link" href="unlock.jpg" target="_blank" rel="noopener noreferrer">
+    View original image (served to browser)
   </a>
 
-  <!-- Counters -->
   <p class="caption">
     Interaction counters (for demonstration only):
   </p>
@@ -187,7 +182,6 @@
     isTopProtected = !isTopProtected;
   }
 
-  // Right-click detection
   document.addEventListener('contextmenu', function (event) {
     event.preventDefault();
     rightClickCount++;
@@ -195,7 +189,6 @@
     alert('This is a preview image. Please support the photographer by purchasing the final version.');
   });
 
-  // Long-press detection (heuristic)
   let pressTimer;
 
   document.addEventListener('touchstart', function () {
