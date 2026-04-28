@@ -53,6 +53,29 @@
       border-radius: 6px;
     }
 
+    .code-block {
+      background: #1e1e1e;
+      color: #00ffcc;
+      padding: 12px;
+      border-radius: 6px;
+      margin-top: 20px;
+      font-family: monospace;
+      font-size: 13px;
+      text-align: left;
+    }
+
+    .download-link {
+      display: inline-block;
+      margin-top: 15px;
+      color: #4CAF50;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    .download-link:hover {
+      text-decoration: underline;
+    }
+
     .credit {
       font-size: 11px;
       color: #888;
@@ -84,7 +107,17 @@
     </div>
   </div>
 
-  <button id="toggleButton" onclick="toggleOverlay()">Toggle Protection</button>
+  <button onclick="toggleOverlay()">Toggle Protection</button>
+
+  <!-- Code example -->
+  <div class="code-block">
+    &lt;img src="unlock.jpg" alt="Demo Image"&gt;
+  </div>
+
+  <!-- Download link -->
+  <a class="download-link" href="unlock.jpg" download>
+    Download original image
+  </a>
 
   <p class="credit">
     Image credit:
