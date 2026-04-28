@@ -53,12 +53,18 @@
       border-radius: 6px;
     }
 
+    .caption {
+      margin-top: 20px;
+      font-size: 14px;
+      color: #ccc;
+    }
+
     .code-block {
       background: #1e1e1e;
       color: #00ffcc;
       padding: 12px;
       border-radius: 6px;
-      margin-top: 20px;
+      margin-top: 10px;
       font-family: monospace;
       font-size: 13px;
       text-align: left;
@@ -66,7 +72,7 @@
 
     .download-link {
       display: inline-block;
-      margin-top: 15px;
+      margin-top: 10px;
       color: #4CAF50;
       text-decoration: none;
       font-weight: bold;
@@ -109,10 +115,20 @@
 
   <button onclick="toggleOverlay()">Toggle Protection</button>
 
-  <!-- Code example -->
+  <!-- Code caption -->
+  <p class="caption">
+    The image is still referenced directly in the page source:
+  </p>
+
+  <!-- Code block -->
   <div class="code-block">
     &lt;img src="unlock.jpg" alt="Demo Image"&gt;
   </div>
+
+  <!-- Download caption -->
+  <p class="caption">
+    The same file is already delivered to the browser:
+  </p>
 
   <!-- Download link -->
   <a class="download-link" href="unlock.jpg" download>
