@@ -135,6 +135,22 @@
     Download original image
   </a>
 
+  <!-- Counters -->
+  <p class="caption">
+    Interaction counters (for demonstration only):
+  </p>
+
+  <div class="code-block">
+    Right-click attempts: <span id="rightClickCount">0</span><br>
+    Long-press attempts: <span id="longPressCount">0</span><br>
+    Screenshot attempts: <span id="screenshotCount">Not detectable in browser</span>
+  </div>
+
+  <p class="caption" style="font-size: 13px; color: #999;">
+    These interactions can be measured, but in isolation they don’t indicate lost sales.  
+    Without conversion data, they represent activity, not impact.
+  </p>
+
   <p class="credit">
     Image credit:
     <a href="https://unsplash.com/@henniestander?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText" target="_blank">Hennie Stander</a> /
@@ -144,6 +160,13 @@
 
 <script>
   let isTopProtected = true;
+  let rightClickCount = 0;
+  let longPressCount = 0;
+
+  function updateCounters() {
+    document.getElementById('rightClickCount').innerText = rightClickCount;
+    document.getElementById('longPressCount').innerText = longPressCount;
+  }
 
   function toggleOverlay() {
     const overlay = document.getElementById('overlay');
@@ -164,15 +187,21 @@
     isTopProtected = !isTopProtected;
   }
 
+  // Right-click detection
   document.addEventListener('contextmenu', function (event) {
     event.preventDefault();
+    rightClickCount++;
+    updateCounters();
     alert('This is a preview image. Please support the photographer by purchasing the final version.');
   });
 
+  // Long-press detection (heuristic)
   let pressTimer;
 
   document.addEventListener('touchstart', function () {
     pressTimer = setTimeout(function () {
+      longPressCount++;
+      updateCounters();
       alert('This is a preview image. Please support the photographer by purchasing the final version.');
     }, 600);
   });
